@@ -12,6 +12,10 @@ app
   .use((r, rs, n) => rs.status(200).set(hu) && n())
   .use(x.static('.'))
   .use('/', Router)
+  .get('/first', (req, res, next) => {
+    if(req.query.error == 'yes') return next();
+    res.send("It's working!");
+  })
   .use(({ res: r }) => r.status(404).set(hu).send('Пока нет!'))
   .use((e, r, rs, n) => rs.status(500).set(hu).send(`Ошибка: ${e}`))
   /* .set('view engine', 'pug') */
