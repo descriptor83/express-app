@@ -12,9 +12,15 @@ app
   .use((r, rs, n) => rs.status(200).set(hu) && n())
   .use(x.static('.'))
   .use('/', Router)
-  .get('/first', (req, res, next) => {
+  .get('/login/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
-    res.send("It's working!");
+    res.set({ 'Content-Type' : 'text/plain; charset=utf-8', 'Access-Control-Allow-Origin' : '*' });
+    res.send("descriptor83");
+  })
+  .get('/sample/', (req, res, next) => {
+    if(req.query.error == 'yes') return next();
+    res.set({ 'Content-Type' : 'text/plain; charset=utf-8' });
+    res.send("function task(x){ return x*this*this }");
   })
   .use(({ res: r }) => r.status(404).set(hu).send('Пока нет!'))
   .use((e, r, rs, n) => rs.status(500).set(hu).send(`Ошибка: ${e}`))
