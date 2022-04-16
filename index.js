@@ -9,7 +9,7 @@ Router
   .route('/')
   .get(r => r.res.end('Привет мир!'));
 app
-  .use((r, rs, n) => rs.status(200) && n())
+  .use((r, rs, n) => rs.status(200).set(hu) && n())
   .use(x.static('.'))
   .use('/', Router)
   .get('/login/', (req, res, next) => {
