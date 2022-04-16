@@ -16,7 +16,7 @@ app
     if(req.query.error == 'yes') return next();
     res.set(hu);
     res.set({ 'Access-Control-Allow-Origin' : '*' } );
-    res.send("Пауль83");
+    res.send("descriptor83");
   })
   .get('/sample/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
