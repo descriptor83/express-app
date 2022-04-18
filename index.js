@@ -16,7 +16,6 @@ app
   .get('/login/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
     res.status(200).set(hu).set(cors);
-    res.set( );
     res.send("descriptor83");
   })
   .get('/sample/', (req, res, next) => {
