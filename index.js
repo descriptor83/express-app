@@ -4,23 +4,24 @@ const Router = x.Router();
 const PORT = 4321;
 const { log } = console;
 const hu = { 'Content-Type': 'text/plain; charset=utf-8' };
+const cors = { 'Access-Control-Allow-Origin' : '*' };
 const app = x();
 Router
   .route('/')
   .get(r => r.res.end('Привет мир!'));
 app
-  .use((r, rs, n) => rs.status(200).set(hu) && n())
+  .use((r, rs, n) => rs.status(200).set(hu).set(cors) && n())
   .use(x.static('.'))
   .use('/', Router)
   .get('/login/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
-    res.status(200).set(hu);
-    res.set({ 'Access-Control-Allow-Origin' : '*' } );
+    res.status(200).set(hu).set(cors);
+    res.set( );
     res.send("descriptor83");
   })
   .get('/sample/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
-    res.status(200).set(hu);
+    res.status(200).set(hu).set(cors);
     res.send("function task(x){ return x*this*this }");
   })
   .use(({ res: r }) => r.status(404).set(hu).send('Пока нет!'))
