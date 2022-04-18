@@ -15,12 +15,12 @@ app
   .use('/', Router)
   .get('/login/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
-    res.status(200).set(hu).set(cors);
+    res.status(200);
     res.send("descriptor83");
   })
   .get('/sample/', (req, res, next) => {
     if(req.query.error == 'yes') return next();
-    res.status(200).set(hu).set(cors);
+    res.status(200);
     res.send("function task(x){ return x*this*this }");
   })
   .use(({ res: r }) => r.status(404).set(hu).send('Пока нет!'))
